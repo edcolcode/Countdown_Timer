@@ -5,15 +5,16 @@
 const Countdown = function(targetTimeStamp) {
   const listeners = {};
   const interval = null;
+  let invalidConfiguration = false;
 
   if (!targetTimeStamp) {
     console.error("Target value must be a not null value");
-    return;
+    invalidConfiguration = true;
   }
 
-  if (!targetTimeStamp instanceof Date) {
+  if (!(targetTimeStamp instanceof Date)) {
     console.error("Target value must be a valid Date instance");
-    return;
+    invalidConfiguration = true;
   }
 
   // Clear interval
@@ -27,6 +28,13 @@ const Countdown = function(targetTimeStamp) {
    * Starts the countdown
    */
   const start = function() {
+    if (invalidConfiguration) {
+      console.error(
+        "Unable to initialize the countdown. Invalid configuration."
+      );
+      return;
+    }
+
     const interval = setInterval(() => {
       const remaingTime = targetTimeStamp.getTime() - new Date().getTime();
 

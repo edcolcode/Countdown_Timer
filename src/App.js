@@ -4,6 +4,9 @@ import Display from "./components/Display";
 import Countdown from "./domain/countdown";
 import "./app.css";
 
+/**
+ * Application entry point.
+ */
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -34,7 +37,7 @@ export default class App extends React.Component {
       return;
     }
 
-    if (!countDownDate instanceof Date) {
+    if (!(countDownDate instanceof Date)) {
       return;
     }
 

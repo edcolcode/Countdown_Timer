@@ -8,6 +8,9 @@ Display.propTypes = {
   unit: PropTypes.string.isRequired
 };
 
+/**
+ * Generic component to display the countdown elements.
+ */
 function Display({ value, unit }) {
   return (
     <div className="displayContainer">
